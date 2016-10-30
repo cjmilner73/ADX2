@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#ffffffff">
+
+    <TextView
+        android:id="@+id/last_updated"
+        android:layout_height="50sp"
+        android:layout_width="200sp"
+        android:gravity="left"
+        android:textColor="#000000"
+        android:text="Last Updated"
+        android:textSize="20sp"
+        android:paddingBottom="10sp"
+        android:paddingTop="10sp"
+        android:paddingLeft="10sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        />
+
+    <TextView
+        android:layout_width="400sp"
+        android:layout_height="50sp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textSize="20sp"
+        android:text="DATE"
+        android:paddingBottom="10sp"
+        android:paddingTop="10sp"
+        android:textColor="#000000"
+        android:id="@+id/last_updated_v"
+        android:layout_alignTop="@+id/last_updated"
+        android:layout_toRightOf="@+id/last_updated"
+        android:layout_toEndOf="@+id/last_updated" />
+
+    <TextView
+        android:layout_height="100sp"
+        android:layout_width="400sp"
+        android:layout_alignParentTop="@+id/open_markets"
+        android:background="@drawable/back" />
+
+    <TextView
+        android:layout_height="100sp"
+        android:layout_width="400sp"
+        android:layout_alignParentTop="@+id/open_markets_v"
+        android:background="@drawable/back" />
+
+    <TextView
+        android:id="@+id/open_markets"
+        android:layout_height="50sp"
+        android:layout_width="200sp"
+        android:background="#ffe4e8ff"
+        android:gravity="left"
+        android:textColor="#000000"
+        android:text="Open Markets"
+        android:textSize="20sp"
+        android:paddingBottom="10sp"
+        android:paddingTop="10sp"
+        android:paddingLeft="10sp"
+        android:layout_below="@+id/last_updated"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="200sp"
+        android:layout_height="50sp"
+        android:background="#ffe4e8ff"
+        android:textColor="#000000"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="OPEN MARKETS"
+        android:paddingBottom="10sp"
+        android:paddingTop="10sp"
+        android:id="@+id/open_markets_v"
+        android:layout_alignTop="@+id/open_markets"
+        android:layout_toRightOf="@+id/open_markets"
+        android:layout_toEndOf="@+id/open_markets" />
+
+    <TextView
+        android:layout_height="200sp"
+        android:layout_width="400sp"
+        android:layout_alignParentTop="@+id/securities_tracked"
+        android:background="@drawable/back" />
+
+    <TextView
+        android:layout_height="200sp"
+        android:layout_width="400sp"
+        android:layout_alignParentTop="@+id/securities_tracked_v"
+        android:background="@drawable/back" />
+
+    <TextView
+        android:id="@+id/securities_tracked"
+        android:layout_height="50sp"
+        android:layout_width="200sp"
+        android:gravity="left"
+        android:textColor="#000000"
+        android:text="Securities Tracked"
+        android:textSize="20sp"
+        android:paddingBottom="10sp"
+        android:paddingTop="10sp"
+        android:paddingLeft="10sp"
+        android:layout_below="@id/open_markets"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="200sp"
+        android:layout_height="50sp"
+        android:textColor="#000000"
+        android:paddingBottom="10sp"
+        android:paddingTop="10sp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="SECS TRACKED"
+        android:id="@+id/securities_tracked_v"
+        android:layout_alignTop="@id/securities_tracked"
+        android:layout_toRightOf="@id/securities_tracked"
+        android:layout_toEndOf="@id/securities_tracked" />
+
+    <TextView
+        android:layout_height="300sp"
+        android:layout_width="400sp"
+        android:layout_alignParentTop="@+id/open_positions"
+        android:background="@drawable/back" />
+
+    <TextView
+        android:layout_height="300sp"
+        android:layout_width="400sp"
+        android:layout_alignParentTop="@+id/open_positions_v"
+        android:background="@drawable/back" />
+
+    <TextView
+        android:id="@+id/open_positions"
+        android:layout_height="50sp"
+        android:layout_width="200sp"
+        android:background="#ffe4e8ff"
+        android:gravity="left"
+        android:textColor="#000000"
+        android:text="Open Positions"
+        android:textSize="20sp"
+        android:paddingBottom="10sp"
+        android:paddingTop="10sp"
+        android:paddingLeft="10sp"
+        android:layout_below="@+id/securities_tracked"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="200sp"
+        android:layout_height="50sp"
+        android:background="#ffe4e8ff"
+        android:textColor="#000000"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="OPEN POSITIONS"
+        android:paddingBottom="10sp"
+        android:paddingTop="10sp"
+        android:id="@+id/open_positions_v"
+        android:layout_alignTop="@+id/open_positions"
+        android:layout_toRightOf="@+id/open_positions"
+        android:layout_toEndOf="@+id/open_positions" />
+
+    <TextView
+        android:layout_height="400sp"
+        android:layout_width="400sp"
+        android:layout_alignParentTop="@+id/profit_and_loss"
+        android:background="@drawable/back" />
+
+    <TextView
+        android:layout_height="400sp"
+        android:layout_width="400sp"
+        android:layout_alignParentTop="@+id/profit_and_loss_v"
+        android:background="@drawable/back" />
+
+    <TextView
+        android:id="@+id/profit_and_loss"
+        android:layout_height="50sp"
+        android:layout_width="200sp"
+        android:gravity="left"
+        android:textColor="#000000"
+        android:text="Profit/Loss"
+        android:textSize="20sp"
+        android:paddingBottom="10sp"
+        android:paddingTop="10sp"
+        android:paddingLeft="10sp"
+        android:layout_below="@id/open_positions"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <TextView
+        android:layout_width="200sp"
+        android:layout_height="50sp"
+        android:textColor="#000000"
+        android:paddingBottom="10sp"
+        android:paddingTop="10sp"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="PROFIT/LOSS"
+        android:id="@+id/profit_and_loss_v"
+        android:layout_alignTop="@id/profit_and_loss"
+        android:layout_toRightOf="@id/profit_and_loss"
+        android:layout_toEndOf="@id/profit_and_loss" />
+
+
+</RelativeLayout>

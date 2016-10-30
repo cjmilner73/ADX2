@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout  xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    <Button
+        android:id="@+id/testButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Income"
+        android:textSize="15dip"
+        android:layout_weight="1" />
+
+    <TextView
+        android:layout_width="100sp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="HEADER"
+        android:textColor="#000000"
+        android:paddingLeft="10sp"/>
+
+    <TextView
+        android:layout_width="100sp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Symbol"
+        android:id="@+id/trackingSymbol"
+        android:textColor="#000000"
+        android:paddingLeft="10sp"/>
+
+    <TextView
+        android:layout_width="80sp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Price"
+        android:textColor="#000000"
+        android:id="@+id/trackingLatestPrice" />
+
+    <TextView
+        android:layout_width="80sp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Trigger"
+        android:textColor="#000000"
+        android:id="@+id/trackingTrigger" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Active"
+        android:textColor="#000000"
+        android:id="@+id/trackingDaysActive" />
+</LinearLayout>

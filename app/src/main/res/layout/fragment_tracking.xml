@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="sds.com.fragmentlistexample.ExampleItemFragment">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="28sp"
+        android:background="#000000">
+
+    <TextView
+        android:layout_width="90sp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Symbol"
+        android:textColor="#ff569745"
+        android:background="#ffdddddd"
+        android:id="@+id/trackingSymbol"
+        android:paddingLeft="10sp"
+        android:layout_marginRight="1sp"
+        />
+
+    <TextView
+        android:layout_width="80sp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Price"
+        android:textColor="#ff569745"
+        android:background="#ffdddddd"
+        android:id="@+id/trackingLatestPrice"
+        android:paddingLeft="10sp"
+        android:layout_marginRight="1sp"/>
+
+    <TextView
+        android:layout_width="80sp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Trigger"
+        android:textColor="#ff569745"
+        android:background="#ffdddddd"
+        android:id="@+id/trackingTrigger"
+        android:paddingLeft="10sp"
+        android:layout_marginRight="1sp"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Active"
+        android:textColor="#ff569745"
+        android:background="#ffdddddd"
+        android:id="@+id/trackingDaysActive"
+        android:paddingLeft="10sp"
+        android:layout_marginRight="1sp"/>
+
+    </LinearLayout>
+
+    <ListView android:id="@android:id/list" android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="25sp"/>
+
+    <TextView android:id="@android:id/empty" android:layout_width="match_parent"
+        android:layout_height="257dp" android:gravity="center"
+        android:layout_gravity="center"
+        />
+
+
+</FrameLayout>
