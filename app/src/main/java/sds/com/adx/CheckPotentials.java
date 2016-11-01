@@ -100,27 +100,31 @@ public class CheckPotentials {
 //                    Log.i(TAG,"Just deleted expired Potential from DB AFTER TRIG " + p.getSymbol() + ":" + p.getDaysActive());
 //                }
 //            }
+
+
             for (int i = 0; i < potentials.size(); i++) {
                 Potential p = potentials.get(i);
                 Log.d(TAG,p.getSymbol() + " : Checking daysActive first");
                 if (p.daysActive >= MAX_DAYS_ACTIVE && p.getTrigger() == 0) {
+
+                    Log.i(TAG,"About to delete Potential from array " + p.getSymbol() + ":" + p.getDaysActive());
                     db.deletePotential(p);
                     potentials.remove(i);
-                    Log.i(TAG,"Just deleted expired Potential from array " + p.getSymbol() + ":" + p.getDaysActive());
-                } else if (p.daysActive >= (2*MAX_DAYS_ACTIVE_AFTER_TRIGGER)) {
+                } else if (p.daysActive >= (4*MAX_DAYS_ACTIVE)) {
+
+                    Log.i(TAG,"About to delete expired Potential from array AFTER TRIG " + p.getSymbol() + ":" + p.getDaysActive());
                     db.deletePotential(p);
                     potentials.remove(i);
-                    Log.i(TAG,"Just deleted expired Potential from array AFTER TRIG " + p.getSymbol() + ":" + p.getDaysActive());
                 }
             }
 
 
             for (int i = 0; i < potentials.size(); i++) {
-
                 Potential p = potentials.get(i);
 
+//                showPotentials();
+
                 ArrayList<Quote> listQuotesP = getAllPotQuotes(p);
-                Log.d(TAG,"Got " + listQuotesP.size() + " quotes from db");
 
                 if (listQuotesP.size() > 1) {
 
@@ -132,7 +136,7 @@ public class CheckPotentials {
                     if (absExposedWeight < 4) {
                         balanced = true;
                     } else {
-                        balanced = false;
+                        balanced = true;
                     }
 
                     if (!thisTestRun) {
@@ -194,11 +198,9 @@ public class CheckPotentials {
                                 Log.d(TAG, "PRE-TRIG Sell: " + p.symbol + " : " + trigger + " : " + p.getStop() + " : " + p.getLimit() + " : " + p.getPpp());
 
                             }
-//					db.showAllPotentials();
-//					showPotentials();
+
                         }
                     }
-                    Log.d(TAG,p.getSymbol() + " : Updating database with potential");
 
                     db.updatePotential(p);
 
@@ -206,7 +208,7 @@ public class CheckPotentials {
 
 
                     if (p.getTrigger() != 0 && p.direction.equals("BUY") && (currentInt != 0 || current != -1)) {
-                        Log.d(TAG,p.getSymbol() + " : Now checking if we can trigger a Position");
+                        Log.d(TAG,p.getSymbol() + " : Now checking if we can trigger a Position, current: " + current + " and trigger: " + p.getTrigger());
                         if (p.current >= p.trigger && p.current < (p.trigger + (p.trigger * TRIGGER_BUFFER)) && p.current < p.getHigh() && isRising && balanced) {
 
 //					checkStopLimit(stop, limit);
@@ -218,14 +220,15 @@ public class CheckPotentials {
 
                             db.addPosition(newPosition);
                             db.deletePotential(p);
-                            potentials.remove(i);
-                            Log.i(TAG, "Just deleted Potential from as raising Position " + p.getSymbol() + ":" + p.getDaysActive());
+                            Log.i(TAG, "Just deleted Potential from (from DB) as raising Position " + p.getSymbol() + ":" + p.getDaysActive());
+
 
                             double potential_profit = (p.getLimit() - current) * p.getPpp();
                             double potential_loss = (current - p.getStop()) * p.getPpp();
 
                             sendMessage(notificationCounter++, "Buy: " + p.symbol + " : " + current + " : " + p.getStop() + " : " + p.getLimit() + " : " + p.getPpp() + " : " + potential_loss + " : " + potential_profit);
                             Log.d(TAG, "Buy: " + p.symbol + " : " + current + " : " + p.getStop() + " : " + p.getLimit() + " : " + p.getPpp() + " : " + potential_loss + " : " + potential_profit);
+//                            potentials.remove(i);
 
                         } else {
                             Log.d(TAG, "Didn't raise Position because balanced maybe = " + balanced + " or isRising " + isRising + " " + p.getSymbol());
@@ -243,12 +246,11 @@ public class CheckPotentials {
 
                             db.addPosition(newPosition);
                             db.deletePotential(p);
-
-                            potentials.remove(i);
-                            Log.i(TAG, "Just deleted Potential from as raising Position " + p.getSymbol() + ":" + p.getDaysActive());
+                            Log.i(TAG, "Just deleted Potential from (DB) as raising Position " + p.getSymbol() + ":" + p.getDaysActive());
 
                             sendMessage(notificationCounter++, "Sell: " + p.symbol + " : " + current + " : " + p.getStop() + " : " + p.getLimit() + " : " + p.getPpp());
                             Log.d(TAG, "Sell: " + p.symbol + " : " + current + " : " + p.getStop() + " : " + p.getLimit() + " : " + p.getPpp());
+//                            potentials.remove(i);
 
                         }
                     } else {
@@ -299,11 +301,12 @@ public class CheckPotentials {
         for (int i = 0; i < allPot.size(); i++) {
 
             p = allPot.get(i);
-            Log.d(TAG, "POT: symb: " + p.getSymbol());
-            Log.d(TAG, "POT: stop: " + p.getStop());
-            Log.d(TAG, "POT: ------------------");
+            Log.d(TAG, "POT: " + p.getSymbol());
+//            Log.d(TAG, "POT: stop: " + p.getStop());
+//            Log.d(TAG, "POT: ------------------");
 
         }
+        Log.d(TAG,"POT: " + allPot.size());
     }
 
     private String getDirection(ArrayList<Quote> quotes) {
@@ -345,11 +348,13 @@ public class CheckPotentials {
             Quote thisQuote = dbQuotes.get(y);
             if (thisQuote.getSYMBOL().equals(symb) && thisQuote.getID() >= (startId)) {
                 potQuotes.add(thisQuote);
-                Log.d(TAG, "Adding potQuote " + thisQuote.getSYMBOL() + " for date " + thisQuote.getDATE() + " : " + thisQuote.getCLOSE());
+                Log.d(TAG, "Adding potQuote " + thisQuote.getSYMBOL() + " for date " + thisQuote.getDATE() + " : CLOSE: " + thisQuote.getCLOSE() + " : ADX: " + thisQuote.getADX());
             }
         }
 
-
+        if (potQuotes.size()==0) {
+            Log.d(TAG,"WARNING, returning 0 quotes for " + p.getSymbol());
+        }
         return potQuotes;
     }
 
@@ -527,8 +532,8 @@ public class CheckPotentials {
 						trigger = p.get(i+1).getCLOSE() - ((p.get(i+1).getCLOSE() - low) / 2);
 //                        trigger = low + ((high - low) / 2);
 
-                        Log.d(TAG, "Sell trigger= " + p.get(i).getSYMBOL() + " : " + p.get(i + 1).getCLOSE() + " : " + ((p.get(i + 1).getCLOSE() - low) / 2) + " : " + low + " : " + high);
-                        Log.d(TAG, "Sell trigger: " + p.get(i).getSYMBOL() + " : " + trigger);
+                        Log.d(TAG, "Sell trigger (close)= " + p.get(i).getSYMBOL() + " : " + p.get(i + 1).getCLOSE() + " : " + ((p.get(i + 1).getCLOSE() - low) / 2) + " : " + low + " : " + high);
+                        Log.d(TAG, "Sell trigger (trigger): " + p.get(i).getSYMBOL() + " : " + trigger);
                         Log.d(TAG, "trigger=low + (high - low): " + low + " + " + high + " -  " + low);
 
 //  trigger = p.get(i).getLOW();

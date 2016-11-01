@@ -68,7 +68,6 @@ public class CSVFunctions {
 				while ((line = reader.readLine()) != null) {
 					if (! line.contains("Date") ) {
 						db.insertLine(symbol, line);
-						Log.d(TAG,"Insert Line: " + line);
 					}
 				}
 			}

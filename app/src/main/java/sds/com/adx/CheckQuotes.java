@@ -1022,6 +1022,7 @@ public class CheckQuotes extends BroadcastReceiver {
 			}
 			// End the TEST loop here
 //			showAll();
+			Log.d(TAG,"ENDING ALL");
             return null;
         }
 

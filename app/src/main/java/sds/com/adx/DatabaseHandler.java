@@ -828,7 +828,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 				db.insert(TABLE_QUOTES, null, values);
 
-				Log.d(TAG,"Inserted quote for date: " + quote.getDATE());
+//				Log.d(TAG,"Inserted quote for date: " + quote.getDATE());
 			}
 			db.setTransactionSuccessful();
 		}
@@ -1096,7 +1096,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 //		// looping through all rows and adding to list
 		if (cursor.moveToFirst()) {
 			do {
-				Log.d(TAG,"Move to first");
 				Quote quote = new Quote(0, "", "", 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f,0.0f);
 				// quote.setID(Integer.parseInt(cursor.getString(ID)));
 				quote.setID(cursor.getInt(ID));
@@ -1131,7 +1130,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				} else {
 					dir = "SELL";
 				}
-
+				Log.d(TAG,cursor.getString(SYMBOL) + " ADX: " + cursor.getDouble(ADX));
 				if ( (cursor.getDouble(ADX) > ADX_THRESHOLD) && checkHighLow(close, sym, dir) && ! symbolActive(cursor.getString(SYMBOL)) ) {
 //				if ( (cursor.getDouble(ADX) > ADX_THRESHOLD) && ! symbolActive(cursor.getString(SYMBOL)) ) {
 
@@ -1652,7 +1651,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 				db.insert(TABLE_RAW_STREAM, null, values);
 				db.setTransactionSuccessful();
 			} catch (Exception e) {
-			Log.d(TAG,"insertLine Exception: " + e.getMessage());
+//			Log.d(TAG,"insertLine Exception: " + e.getMessage());
 		}	 finally {
 				db.endTransaction();
 				//db.close();
