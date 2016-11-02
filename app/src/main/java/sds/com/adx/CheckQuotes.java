@@ -46,7 +46,7 @@ public class CheckQuotes extends BroadcastReceiver {
 
 	boolean testRun = true;
 	private int testOffSet;
-	private String start_date = "2016-07-01";
+	private String start_date = "2016-01-01";
 
 	Context thisContext;
 		
@@ -1017,7 +1017,9 @@ public class CheckQuotes extends BroadcastReceiver {
 
 					new CheckPotentials(thisContext, testRun);
 
-
+//					if (counter==60) {
+//						break;
+//					}
 				}
 			}
 			// End the TEST loop here

@@ -136,7 +136,7 @@ public class CheckPotentials {
                     if (absExposedWeight < 4) {
                         balanced = true;
                     } else {
-                        balanced = true;
+                        balanced = false;
                     }
 
                     if (!thisTestRun) {
